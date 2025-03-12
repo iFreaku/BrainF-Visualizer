@@ -9,15 +9,18 @@
 <body>
     <div class="container">
         <h1>Brainfuck Live Visualizer</h1>
+        <h3>Memory Strip</h3>
+        <div class="code-highlight" id="code-highlight"></div>
+        <div class="memory-container" id="memory-container"></div>
+        <h3>OUTPUT</h3>
+        <div class="output" id="output"></div>
+        <hr>
         <textarea id="code" placeholder="Enter Brainfuck code here..."></textarea>
         <button id="run">Run</button>
         <div class="speed-control">
             <label for="speed">Interpreter Speed (ms): <span id="speed-value">100</span></label>
             <input type="range" id="speed" min="10" max="1000" value="100">
         </div>
-        <div class="output" id="output"></div>
-        <div class="code-highlight" id="code-highlight"></div>
-        <div class="memory-container" id="memory-container"></div>
     </div>
     <script src="script.js"></script>
 </body>
