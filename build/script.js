@@ -20,8 +20,8 @@ const updateMemoryVisualization = () => {
         cellNumber.className = 'cell-number';
         cellNumber.textContent = container.children.length;
 
-        cell.appendChild(cellNumber);
         container.appendChild(cell);
+        cell.appendChild(cellNumber);
     }
 
     for (let i = 0; i < container.children.length; i++) {
@@ -123,6 +123,7 @@ document.getElementById('speed').addEventListener('input', (e) => {
 
     if (intervalId) {
         const code = document.getElementById('code').value;
+        clearMemoryStrip();
         runBrainfuck(code, speed);
     }
 });
