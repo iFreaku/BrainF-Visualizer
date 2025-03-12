@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brainfuck Live Visualizer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Brainfuck Live Visualizer</h1>
+        <textarea id="code" placeholder="Enter Brainfuck code here..."></textarea>
+        <button id="run">Run</button>
+        <div class="speed-control">
+            <label for="speed">Interpreter Speed (ms): <span id="speed-value">100</span></label>
+            <input type="range" id="speed" min="10" max="1000" value="100">
+        </div>
+        <div class="output" id="output"></div>
+        <div class="code-highlight" id="code-highlight"></div>
+        <div class="memory-container" id="memory-container"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
