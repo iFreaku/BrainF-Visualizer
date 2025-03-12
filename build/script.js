@@ -20,8 +20,10 @@ const updateMemoryVisualization = () => {
         cellNumber.className = 'cell-number';
         cellNumber.textContent = container.children.length;
 
+
         container.appendChild(cell);
         cell.appendChild(cellNumber);
+        console.log("Number appended")
     }
 
     for (let i = 0; i < container.children.length; i++) {
