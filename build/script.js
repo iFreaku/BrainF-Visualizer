@@ -22,8 +22,8 @@ const updateMemoryVisualization = () => {
 
     for (let i = 0; i < container.children.length; i++) {
         const cell = container.children[i];
-        cell.textContent = memory[i] || 0; // Use 0 if memory[i] is undefined
-        cell.classList.toggle('active', i === pointer); // Highlight the active cell
+        cell.textContent = memory[i] || 0;
+        cell.classList.toggle('active', i === pointer);
     }
 };
 
