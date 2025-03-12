@@ -6,19 +6,24 @@ let intervalId = null;
 
 const updateMemoryVisualization = () => {
     const container = document.getElementById('memory-container');
-    container.innerHTML = '';
 
-    for (let i = 0; i <= pointer; i++) {
+    while (container.children.length <= pointer) {
         const cell = document.createElement('div');
-        cell.className = `memory-cell ${i === pointer ? 'active' : ''}`;
-        cell.textContent = memory[i];
+        cell.className = 'memory-cell';
+        cell.textContent = 0;
 
         const cellNumber = document.createElement('div');
         cellNumber.className = 'cell-number';
-        cellNumber.textContent = i;
+        cellNumber.textContent = container.children.length;
 
         cell.appendChild(cellNumber);
         container.appendChild(cell);
+    }
+
+    for (let i = 0; i < container.children.length; i++) {
+        const cell = container.children[i];
+        cell.textContent = memory[i] || 0; // Use 0 if memory[i] is undefined
+        cell.classList.toggle('active', i === pointer); // Highlight the active cell
     }
 };
 
