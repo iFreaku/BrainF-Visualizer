@@ -54,6 +54,8 @@ const runBrainfuck = (code, speed) => {
     document.getElementById('output').textContent = '';
     let loopStack = [];
     let i = 0;
+    let inputIndex = 0;
+    const input = document.getElementById('input').value;
 
     const executeStep = () => {
         if (i >= code.length) {
@@ -82,6 +84,14 @@ const runBrainfuck = (code, speed) => {
             case '.':
                 output += String.fromCharCode(memory[pointer]);
                 document.getElementById('output').textContent = output;
+                break;
+            case ',':
+                if (inputIndex < input.length) {
+                    memory[pointer] = input.charCodeAt(inputIndex);
+                    inputIndex++;
+                } else {
+                    memory[pointer] = 0;
+                }
                 break;
             case '[':
                 if (memory[pointer] === 0) {

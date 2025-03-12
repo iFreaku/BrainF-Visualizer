@@ -119,3 +119,24 @@ button:hover {
     padding: 2px;
     border-radius: 3px;
 }
+
+
+.input-control {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.input-control label {
+    font-size: 14px;
+}
+
+.input-control input {
+    width: 200px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #3d3d3d;
+    color: #ffffff;
+}
