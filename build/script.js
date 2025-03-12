@@ -6,7 +6,7 @@ let intervalId = null;
 
 const clearMemoryStrip = () => {
     document.getElementById('memory-container').innerHTML = '';
-}
+};
 
 const updateMemoryVisualization = () => {
     const container = document.getElementById('memory-container');
@@ -14,22 +14,21 @@ const updateMemoryVisualization = () => {
     while (container.children.length <= pointer) {
         const cell = document.createElement('div');
         cell.className = 'memory-cell';
-        cell.textContent = 0;
+        cell.textContent = memory[container.children.length] || 0;
 
         const cellNumber = document.createElement('div');
         cellNumber.className = 'cell-number';
         cellNumber.textContent = container.children.length;
 
-
-        container.appendChild(cell);
         cell.appendChild(cellNumber);
-        console.log("Number appended")
+        container.appendChild(cell);
+        console.log(`Cell ${container.children.length} created with number: ${cellNumber.textContent}`);
     }
 
     for (let i = 0; i < container.children.length; i++) {
         const cell = container.children[i];
-        cell.textContent = memory[i] || 0; 
-        cell.classList.toggle('active', i === pointer); 
+        cell.textContent = memory[i] || 0;
+        cell.classList.toggle('active', i === pointer);
     }
 };
 
