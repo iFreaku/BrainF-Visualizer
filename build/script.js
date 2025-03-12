@@ -4,10 +4,13 @@ let pointer = 0;
 let output = '';
 let intervalId = null;
 
+const clearMemoryStrip = () => {
+    document.getElementById('memory-container').innerHTML = '';
+}
+
 const updateMemoryVisualization = () => {
     const container = document.getElementById('memory-container');
 
-    // Add new cells if the pointer has moved beyond the current number of cells
     while (container.children.length <= pointer) {
         const cell = document.createElement('div');
         cell.className = 'memory-cell';
@@ -21,11 +24,10 @@ const updateMemoryVisualization = () => {
         container.appendChild(cell);
     }
 
-    // Update all cells with the current memory values
     for (let i = 0; i < container.children.length; i++) {
         const cell = container.children[i];
-        cell.textContent = memory[i] || 0; // Use 0 if memory[i] is undefined
-        cell.classList.toggle('active', i === pointer); // Highlight the active cell
+        cell.textContent = memory[i] || 0; 
+        cell.classList.toggle('active', i === pointer); 
     }
 };
 
@@ -49,7 +51,6 @@ const runBrainfuck = (code, speed) => {
     pointer = 0;
     output = '';
     document.getElementById('output').textContent = '';
-    document.getElementById('memory-container').innerHTML = ''; // Clear memory visualization
     let loopStack = [];
     let i = 0;
 
@@ -105,7 +106,6 @@ const runBrainfuck = (code, speed) => {
         updateMemoryVisualization();
     };
 
-    // Clear any existing interval and start a new one
     if (intervalId) clearInterval(intervalId);
     intervalId = setInterval(executeStep, speed);
 };
@@ -113,17 +113,16 @@ const runBrainfuck = (code, speed) => {
 document.getElementById('run').addEventListener('click', () => {
     const code = document.getElementById('code').value;
     const speed = parseInt(document.getElementById('speed').value, 10);
+    clearMemoryStrip();
     runBrainfuck(code, speed);
 });
 
-// Dynamic speed change
 document.getElementById('speed').addEventListener('input', (e) => {
     const speed = parseInt(e.target.value, 10);
     document.getElementById('speed-value').textContent = speed;
 
-    // If the interpreter is running, update the speed dynamically
     if (intervalId) {
         const code = document.getElementById('code').value;
-        runBrainfuck(code, speed); // Restart with the new speed
+        runBrainfuck(code, speed);
     }
 });
